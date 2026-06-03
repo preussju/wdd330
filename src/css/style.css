@@ -40,8 +40,19 @@ body {
 }
 
 /* header content */
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
-
+.header a{
+    padding: 30px;
+    text-decoration: none;
+    color:black;
+    font-size: 2rem;
+    border-left: solid black 1px;
+}
 
 /* footer content */
 footer{
