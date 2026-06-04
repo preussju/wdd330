@@ -1,26 +1,10 @@
-import { loadHeaderFooter } from "./utils.mjs";
-
-loadHeaderFooter();
-
-async function init() {
-  try {
-    const data = await getWorldCup();
-
-    console.log(data);
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-init();
-
 // 1. Configura as URLs
 const proxy = "https://cors-anywhere.herokuapp.com/";
 const apiSportsUrl = "https://api-sports.io"; // Exemplo: Team ID 6
 
 // 2. Monta os cabeçalhos obrigatórios exigidos pela API-Sports
 const meusHeaders = new Headers();
-meusHeaders.append("X-RapidAPI-Key", "822fd4daf8814b5e904afbd467480909");
+meusHeaders.append("x-rapidapi-key", "7e0ed8608bb93737f6085194782766c6");
 meusHeaders.append("x-rapidapi-host", "v3.football.api-sports.io");
 
 const requestOptions = {
@@ -54,3 +38,4 @@ function mostrarJogadoresNaTela(elenco) {
     console.log(`Nome: ${jogador.name} | Posição: ${jogador.position} | Foto: ${jogador.photo}`);
   });
 }
+

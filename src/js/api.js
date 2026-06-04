@@ -18,6 +18,7 @@ export function getCompetitions() {
 
 export function getWorldCupMatches() {
   return fetchData("data=matches&category=football&league=WC");
+
 }
 
 export function getWorldCupStandings() {
