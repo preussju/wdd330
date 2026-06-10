@@ -2,7 +2,7 @@
     {
         "name": "Mexico",
         "continent": "North America",
-        "flag_icon": "🇲🇽",
+        "flag_icon": "🇲x",
         "flag_unicode": "\\u{1F1F2}\\u{1F1FD}",
         "fifa_code": "MEX",
         "group": "A",
@@ -11,7 +11,7 @@
     {
         "name": "South Africa",
         "continent": "Africa",
-        "flag_icon": "🇿🇦",
+        "flag_icon": "za",
         "flag_unicode": "\\u{1F1FF}\\u{1F1E6}",
         "fifa_code": "RSA",
         "group": "A",
