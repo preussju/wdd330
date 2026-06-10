@@ -24,7 +24,7 @@
 /* backgorund image  */
 
 body {
-    background-image: url(/src/public/images/background2.png);
+    background-image: url(/public/images/background2.png);
     background-repeat: no-repeat;
     background-size: cover;
     /* background-position: center; */
