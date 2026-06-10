@@ -1,0 +1,95 @@
+:root {
+    --font-body: "Outift", Helvetica, sans-serif;
+    --font-headline: "Space Grotesk", sans-serif;
+    /* colors */
+    --primary-color: #f0a868;
+    --secondary-color: #525b0f;
+    --tertiary-color: #8a470c;
+    --light-grey: #d0d0d0;
+    --dark-grey: #303030;
+
+    /* sizes */
+    --font-base: 18px;
+    --small-font: 0.8em;
+    --large-font: 1.2em;
+}
+
+* {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* backgorund image  */
+
+body {
+    background-image: url(/src/public/images/background2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-position: center; */
+    background-attachment: fixed;
+}
+
+.main-content, 
+#main-footer,
+#main-header{
+    background-color: rgba(247, 232, 216, 0.887);
+    margin: 0 auto;
+    max-width: 900px;
+    padding: 40px;
+}
+
+/* header content */
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.hexa{
+    text-decoration: none;
+    font-size: 3rem;
+    color: black;
+    font-family: var(--font-headline);
+    font-weight: 600;
+}
+
+.header nav a{
+    padding: 30px;
+    text-decoration: none;
+    color:black;
+    font-size: 2rem;
+    border-left: solid black 1px;
+}
+
+/* display matches cards */
+#matches{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.match-card{
+    background-color: #f0d8c7;
+    padding: 16px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.match-card p {
+    padding-top: 10px;
+    font-size: large;
+}
+
+.teams{
+    display: flex;
+    justify-content: center;
+}
+
+
+/* footer content */
+footer{
+    text-align: center;
+}
+
