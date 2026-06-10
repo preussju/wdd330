@@ -22,4 +22,16 @@ const footerTemplate = await loadTemplate("public/partials/footer.html");
 
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
+
+  initHamburger();
+}
+
+function initHamburger() {
+  const button = document.querySelector("#menu");
+  const nav = document.querySelector(".navigation");
+
+  button.addEventListener("click", () => {
+    nav.classList.toggle("open");
+    button.classList.toggle("open");
+  });
 }

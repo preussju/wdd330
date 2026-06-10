@@ -7,11 +7,6 @@
     --tertiary-color: #8a470c;
     --light-grey: #d0d0d0;
     --dark-grey: #303030;
-
-    /* sizes */
-    --font-base: 18px;
-    --small-font: 0.8em;
-    --large-font: 1.2em;
 }
 
 * {
@@ -23,12 +18,66 @@
 
 /* backgorund image  */
 body {
-    background-image: url(../public/images/background2.png);
+    background-image: url(../public/images/background-small.png);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center; 
     background-attachment: fixed;
 }
+
+
+/* navigation for small view*/
+#menu {
+    font-size: 2rem;
+    border: 0;
+    background: none;
+    position: absolute;
+    top: 3rem;
+    right: 1rem;
+    color: rgb(0, 0, 0);
+}
+
+#menu::before {
+    content: "☰";
+}
+
+#menu.open::before {
+    content: "X";
+}
+
+#menu:hover {
+    color: var(--secondary-color);
+}
+
+.navigation li {
+    padding: 10px;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    list-style: none;
+    color: #fff;
+}
+
+.navigation a {
+    display: none;
+    padding: 1rem;
+    text-decoration: none;
+    color: black;
+    font-size: 1.5rem;
+    text-align: right;
+}
+
+.navigation a:hover {
+    background-color: rgba(216, 162, 162, 0.897);
+}
+
+/* when the button is clicked - the open class is toggled (added/removed) */
+.open a {
+    display: block;
+}
+
 
 .main-content, 
 #main-footer,
@@ -54,24 +103,17 @@ body {
     font-weight: 600;
 }
 
-.header nav a{
-    padding: 30px;
-    text-decoration: none;
-    color:black;
-    font-size: 2rem;
-    border-left: solid black 1px;
-}
 
 /* display matches cards */
 #matches{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 20px;
 }
 
 .match-card{
     background-color: #f0d8c7;
-    padding: 16px;
+    padding: 10px;
     border-radius: 10px;
     text-align: center;
 }
@@ -92,3 +134,35 @@ footer{
     text-align: center;
 }
 
+
+/* media display for large screens */
+@media screen and (min-width: 800px) {
+
+body {
+        background-image: url(../public/images/background-large.png);
+    }
+
+.navigation {
+        flex-direction: row;
+    }
+
+.navigation a:hover {
+    background-color: rgba(216, 162, 162, 0.401);
+}
+
+.navigation a {
+    font-size: 2rem;
+    border-left: solid black 1px;
+}
+
+#menu
+{
+    display: none;
+}
+
+/* display matches cards */
+#matches {
+    grid-template-columns: 1fr 1fr;
+}
+
+}
