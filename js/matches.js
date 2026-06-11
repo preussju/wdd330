@@ -3,7 +3,7 @@ import { getWorldCupMatches } from "./api.js";
 async function displayMatches() {
   const data = await getWorldCupMatches();
 
-  const worldCupMatches = data.data.filter(match => match.id.startsWith("ppv-"));
+  const worldCupMatches = data.data.filter(match => match.id.startsWith("")); //"-ppv" if I wanted
     
   const container = document.querySelector("#matches");
 

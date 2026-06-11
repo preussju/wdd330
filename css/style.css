@@ -1,12 +1,77 @@
 :root {
     --font-body: "Outift", Helvetica, sans-serif;
     --font-headline: "Space Grotesk", sans-serif;
-    /* colors */
-    --primary-color: #f0a868;
-    --secondary-color: #525b0f;
-    --tertiary-color: #8a470c;
-    --light-grey: #d0d0d0;
-    --dark-grey: #303030;
+}
+
+/* GREEN */
+body[data-favorite="MEX"],
+body[data-favorite="RSA"],
+body[data-favorite="BRA"],
+body[data-favorite="KSA"],
+body[data-favorite="SEN"],
+body[data-favorite="ALG"],
+body[data-favorite="CIV"] {
+    --primary-color: #0f99445d;
+}
+
+/* DARK BLUE */
+body[data-favorite="BIH"],
+body[data-favorite="HTI"],
+body[data-favorite="AUS"],
+body[data-favorite="CUW"],
+body[data-favorite="SWE"],
+body[data-favorite="NZL"],
+body[data-favorite="ENG"],
+body[data-favorite="PAN"],
+body[data-favorite="CPV"] {
+    --primary-color: #0b1f3a7a;
+}
+
+/* LIGHT BLUE */
+body[data-favorite="COD"],
+body[data-favorite="ARG"],
+body[data-favorite="URU"],
+body[data-favorite="PAR"],
+body[data-favorite="UZB"] {
+    --primary-color: #74abdf7b;
+}
+
+/* RED */
+body[data-favorite="GHA"],
+body[data-favorite="CRO"],
+body[data-favorite="AUT"],
+body[data-favorite="JOR"],
+body[data-favorite="NOR"],
+body[data-favorite="IRQ"],
+body[data-favorite="FRA"],
+body[data-favorite="TUN"],
+body[data-favorite="IRN"],
+body[data-favorite="EGY"],
+body[data-favorite="NED"],
+body[data-favorite="TUR"],
+body[data-favorite="SUI"],
+body[data-favorite="MAR"],
+body[data-favorite="USA"],
+body[data-favorite="CZE"],
+body[data-favorite="CAN"],
+body[data-favorite="POR"],
+body[data-favorite="JPN"],
+body[data-favorite="KOR"],
+body[data-favorite="SCO"]{
+    --primary-color: #c8102f25;
+}
+
+/* YELLOW */
+body[data-favorite="ECU"],
+body[data-favorite="GER"],
+body[data-favorite="BEL"],
+body[data-favorite="ESP"],
+body[data-favorite="COL"] {
+    --primary-color: #f4c30031;
+}
+
+body[data-favorite="QAT"] {
+    --primary-color: #8a153842;
 }
 
 * {
@@ -93,9 +158,12 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    background-color: var(--primary-color);
+    border-radius: 60px;
 }
 
 .hexa{
+    margin-top: 10px;
     text-decoration: none;
     font-size: 3rem;
     color: black;
@@ -158,6 +226,53 @@ body {
     font-size: 20px;
 }
 
+/* cards and flags on favorites */
+
+#search {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 2px solid #334761;
+    border-radius: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.503);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    max-width: 300px;
+}
+
+#search::placeholder {
+    font-style: italic;
+}
+
+#search:hover {
+    border-color: #cbd5e0;
+}
+
+#countries {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 50px;
+}
+
+.card{
+    text-align: center;
+    padding: 20px;
+}
+
+.favorite-btn {
+    margin: 1rem 0;
+    padding: 1rem;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.favorite {
+    border: 3px solid gold;
+    box-shadow: 0 0 12px gold;
+}
+
+
 /* footer content */
 footer{
     text-align: center;
@@ -194,6 +309,10 @@ body {
 /* display matches cards */
 #matches {
     grid-template-columns: 1fr 1fr;
+}
+
+#countries {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 }

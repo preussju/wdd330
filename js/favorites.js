@@ -12,7 +12,7 @@ async function loadCountries() {
 // Render a list of countries as cards in the container
 function renderCountries(list) {
   container.innerHTML = list.map(country => `
-    <div class="card" onclick="openCountry('${country.fifa_code}')">
+    <div class="card ${isFavorite(country.fifa_code)? "favorite": ""}" onclick="openCountry('${country.fifa_code}')">
       <div class="flag">
         ${getFlagUrl(country.fifa_code)
             ? `<img src="${getFlagUrl(country.fifa_code)}" alt="flag">`
@@ -49,8 +49,15 @@ function openCountry(code) {
 
     modalBody.innerHTML = `
     <img src="${getFlagUrl(country.fifa_code)}" width="80">
+
+    <button class="favorite-btn" onclick="toggleFavorite('${country.fifa_code}')">
+      ${isFavorite(country.fifa_code) ? "⭐" : "☆"}
+    </button>
+
     <h2>${country.name}</h2>
+    <p>${country.continent}</p>
     <p>Group: ${country.group}</p>
+    
     `;
 
   document.getElementById("modal").classList.remove("hidden");
@@ -66,8 +73,32 @@ document.getElementById("modal").addEventListener("click", (e) => {
   }
 });
 
+
+function getFavorite() {
+  return localStorage.getItem("favorite");
+}
+
+function isFavorite(code) {
+  return getFavorite() === code;
+}
+
+function toggleFavorite(code) {
+  const currentFavorite = getFavorite();
+
+  if (currentFavorite === code) {
+    localStorage.removeItem("favorite");
+  } else {
+    localStorage.setItem("favorite", code);
+  }
+
+  renderCountries(allCountries);
+  openCountry(code);
+}
+
+window.toggleFavorite = toggleFavorite;
 window.searchCountries = searchCountries;
 window.openCountry = openCountry;
+window.closeModal = closeModal;
 
 const flagMap = {
   MEX: "mx",
@@ -115,7 +146,19 @@ const flagMap = {
   KSA: "sa",
   IRN: "ir",
   QAT: "qa",
-  AUS: "au"
+  AUS: "au",
+  BIH: "ba",
+  HAI: "ht",
+  SCO: "gb",
+  TUR: "tr",
+  CUW: "cw",
+  NZL: "nz",
+  CPV: "cv",
+  IRQ: "iq",
+  JOR: "jo",
+  COD: "cd",
+  UZB: "uz"
+
 };
 
 function getFlagUrl(fifaCode) {
