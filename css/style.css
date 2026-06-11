@@ -216,6 +216,7 @@ body {
     width: 300px;
 }
 
+
 .hidden {
     display: none;
 }
@@ -224,6 +225,20 @@ body {
     cursor: pointer;
     float: right;
     font-size: 20px;
+}
+
+.favorite-btn {
+    padding: 1rem;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    margin-right: 30px;
+}
+
+.favorite {
+    border: 3px solid gold;
+    box-shadow: 0 0 12px gold;
 }
 
 /* cards and flags on favorites */
@@ -256,20 +271,6 @@ body {
 .card{
     text-align: center;
     padding: 20px;
-}
-
-.favorite-btn {
-    margin: 1rem 0;
-    padding: 1rem;
-    border: none;
-    border-radius: 40px;
-    cursor: pointer;
-    font-size: 1.5rem;
-}
-
-.favorite {
-    border: 3px solid gold;
-    box-shadow: 0 0 12px gold;
 }
 
 

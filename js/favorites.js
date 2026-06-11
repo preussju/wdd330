@@ -47,12 +47,13 @@ function openCountry(code) {
 
   const modalBody = document.getElementById("modal-body");
 
-    modalBody.innerHTML = `
-    <img src="${getFlagUrl(country.fifa_code)}" width="80">
-
+  modalBody.innerHTML = `
+  
     <button class="favorite-btn" onclick="toggleFavorite('${country.fifa_code}')">
       ${isFavorite(country.fifa_code) ? "⭐" : "☆"}
     </button>
+
+    <img src="${getFlagUrl(country.fifa_code)}" width="80">
 
     <h2>${country.name}</h2>
     <p>${country.continent}</p>
