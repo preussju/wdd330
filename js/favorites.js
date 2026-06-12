@@ -7,15 +7,13 @@ async function loadCountries() {
   allCountries = await res.json();
 
   renderCountries(allCountries);
-
-  return allCountries;
 }
 
 // Render a list of countries as cards in the container
 function renderCountries(list) {
   container.innerHTML = list.map(country => `
-    <div class="card ${isFavorite(country.fifa_code)? "favorite": ""}" onclick="openCountry('${country.fifa_code}')">
-      <div class="flag">
+<div 
+  class="card ${isFavorite(country.fifa_code) ? "favorite" : ""}" onclick="toggleFavorite('${country.fifa_code}')">      <div class="flag">
         ${getFlagUrl(country.fifa_code)
             ? `<img src="${getFlagUrl(country.fifa_code)}" alt="flag">`
             : country.flag_icon}
@@ -43,40 +41,6 @@ function searchCountries() {
   renderCountries(filtered);
 }
 
-// Open the country modal for the selected country
-function openCountry(code) {
-  const country = allCountries.find(c => c.fifa_code === code);
-
-  const modalBody = document.getElementById("modal-body");
-
-  modalBody.innerHTML = `
-  
-    <button class="favorite-btn" onclick="toggleFavorite('${country.fifa_code}')">
-      ${isFavorite(country.fifa_code) ? "⭐" : "☆"}
-    </button>
-
-    <img src="${getFlagUrl(country.fifa_code)}" width="80">
-
-    <h2>${country.name}</h2>
-    <p>${country.continent}</p>
-    <p>Group: ${country.group}</p>
-    
-    `;
-
-  document.getElementById("modal").classList.remove("hidden");
-}
-
-function closeModal() {
-  document.getElementById("modal").classList.add("hidden");
-}
-
-document.getElementById("modal").addEventListener("click", (e) => {
-  if (e.target.id === "modal") {
-    closeModal();
-  }
-});
-
-
 function getFavorite() {
   return localStorage.getItem("favorite");
 }
@@ -95,13 +59,10 @@ function toggleFavorite(code) {
   }
 
   renderCountries(allCountries);
-  openCountry(code);
 }
 
 window.toggleFavorite = toggleFavorite;
 window.searchCountries = searchCountries;
-window.openCountry = openCountry;
-window.closeModal = closeModal;
 
 const flagMap = {
   MEX: "mx",
@@ -171,26 +132,8 @@ function getFlagUrl(fifaCode) {
   return `https://flagcdn.com/w80/${iso}.png`;
 }
 
- async function displayFavoriteTeamData() {
-  
-  const countries = await loadCountries();
-  const favoriteCode = localStorage.getItem("favorite");
-  const country = countries.find( c => c.fifa_code === favoriteCode);
-
-  if (!country) {
-    console.error("Country not found");
-    return;
-  }
-
-  const response = await fetch(
-    `https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=${encodeURIComponent(country.name)}`
-  );
-
-  const data = await response.json();
-
-  console.log(data);
+async function init() {
+  await loadCountries();
 }
 
-
-loadCountries();
-displayFavoriteTeamData();
+init();
