@@ -224,6 +224,33 @@ body {
     padding: 20px;
 }
 
+/* tables with groups */
+
+.group {
+    margin-bottom: 30px;
+    background-color: #202d7246;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 2px solid #f0d8c7;
+    padding: 8px;
+}
+
+th {
+    background: #eee;
+}
+
+td img {
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
 
 /* footer content */
 footer{

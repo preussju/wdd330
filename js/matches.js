@@ -56,5 +56,4 @@ function sortMatchesByFavorite(matches, countries) {
   });
 }
 
-
 displayMatches();

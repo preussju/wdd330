@@ -13,7 +13,9 @@ async function fetchData(params) {
 }
 
 export function getWorldCupMatches() {
-  return fetchData("data=matches&category=football&league=WC");
-
+  return fetchData("data=matches&category=football&season=2026");
 }
 
+export function getWorldCupStandings() {
+  return fetchData("data=results&category=tables&league=WC&season=2026");
+}
