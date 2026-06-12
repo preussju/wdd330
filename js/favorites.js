@@ -7,6 +7,8 @@ async function loadCountries() {
   allCountries = await res.json();
 
   renderCountries(allCountries);
+
+  return allCountries;
 }
 
 // Render a list of countries as cards in the container
@@ -169,4 +171,26 @@ function getFlagUrl(fifaCode) {
   return `https://flagcdn.com/w80/${iso}.png`;
 }
 
+ async function displayFavoriteTeamData() {
+  
+  const countries = await loadCountries();
+  const favoriteCode = localStorage.getItem("favorite");
+  const country = countries.find( c => c.fifa_code === favoriteCode);
+
+  if (!country) {
+    console.error("Country not found");
+    return;
+  }
+
+  const response = await fetch(
+    `https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=${encodeURIComponent(country.name)}`
+  );
+
+  const data = await response.json();
+
+  console.log(data);
+}
+
+
 loadCountries();
+displayFavoriteTeamData();
