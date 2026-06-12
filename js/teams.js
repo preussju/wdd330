@@ -48,7 +48,7 @@ function openModal() {
 \    <h2>${currentTeam.strTeam}</h2>
     <p>Founded: ${currentTeam.intFormedYear}</p>
     <p>Stadium: ${currentTeam.strStadium}</p>
-    <p>${currentTeam.strDescriptionEN?.slice(0, 400) || ""}...</p>
+    <p>${currentTeam.strDescriptionEN?.slice(0, 300) || ""}...</p>
     <img src="${currentTeam.strFanart1}" width="250">
   `;
 

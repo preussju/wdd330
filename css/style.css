@@ -1,12 +1,30 @@
 :root {
     --font-body: "Outift", Helvetica, sans-serif;
     --font-headline: "Space Grotesk", sans-serif;
+    --font-title: "Rock Salt", sans-serif;
 }
 
 * {
     font-family: var(--font-body);
     box-sizing: border-box;
     padding: 0;
+}
+
+.trophyIcon{
+    width: 150px;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+}
+
+.hexa {
+    text-decoration: none;
+    font-size: 4rem;
+    color: black;
+    font-family: var(--font-title);
+    position: relative;
+    left: 100px;
 }
 
 /* backgorund image  */
@@ -50,16 +68,16 @@ body {
     flex-direction: column;
     justify-content: space-around;
     list-style: none;
-    color: #fff;
 }
 
 .navigation a {
     display: none;
-    padding: 1rem;
+    padding-left: 1rem;
     text-decoration: none;
     color: black;
     font-size: 1.5rem;
     text-align: right;
+    font-weight: 600;
 }
 
 .navigation a:hover {
@@ -90,16 +108,6 @@ body {
     border-radius: 60px;
 }
 
-.hexa{
-    margin-top: 10px;
-    text-decoration: none;
-    font-size: 3rem;
-    color: black;
-    font-family: var(--font-headline);
-    font-weight: 600;
-}
-
-
 /* display matches cards */
 #matches{
     display: grid;
@@ -112,16 +120,26 @@ body {
     padding: 10px;
     border-radius: 10px;
     text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.24);
 }
 
 .match-card p {
-    padding-top: 10px;
     font-size: large;
 }
 
 .teams{
     display: flex;
     justify-content: center;
+}
+
+.vs {
+    font-weight: bold;
+}
+
+#todayMatches{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr;
 }
 
 /* modal for displaying the favorites countries */
@@ -138,11 +156,26 @@ body {
 }
 
 .modal-content {
-    background: white;
+    background: #f5ece6;
     padding: 20px;
     border-radius: 10px;
     width: 300px;
 }
+
+#favorite-team {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #6f2d2d39;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.503);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#favorite-team img{
+    padding: 10px;
+}
+
 
 .hidden {
     display: none;

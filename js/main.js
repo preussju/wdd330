@@ -1,4 +1,3 @@
-import { loadHeaderFooter, applyFavoriteTheme } from "./utils.mjs";
+import { loadHeaderFooter} from "./utils.mjs";
 
-applyFavoriteTheme();
 loadHeaderFooter();

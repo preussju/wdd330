@@ -35,11 +35,3 @@ function initHamburger() {
     button.classList.toggle("open");
   });
 }
-
-export function applyFavoriteTheme() {
-  const fav = localStorage.getItem("favorite");
-
-  if (fav) {
-    document.body.dataset.favorite = fav;
-  }
-}

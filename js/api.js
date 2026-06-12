@@ -12,24 +12,8 @@ async function fetchData(params) {
   return response.json();
 }
 
-export function getCompetitions() {
-  return fetchData("data=competitions&category=football");
-}
-
 export function getWorldCupMatches() {
   return fetchData("data=matches&category=football&league=WC");
 
 }
 
-export function getWorldCupStandings() {
-  return fetchData("data=standings&category=football&league=WC");
-}
-
-
-// fetch("https://api.sportsrc.org/?data=results&category=leagues")
-//   .then(r => r.json())
-//     .then(data => console.log(data));
-  
-//     fetch("https://api.sportsrc.org/?data=matches&category=football&league=WC")
-//   .then(r => r.json())
-//   .then(data => console.log(data));

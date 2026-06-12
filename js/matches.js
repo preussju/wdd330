@@ -1,6 +1,5 @@
 import { getWorldCupMatches } from "./api.js";
 
-
 async function loadCountries() {
   const res = await fetch("./public/json/teams.json");
   return await res.json();

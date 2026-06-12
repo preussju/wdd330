@@ -11,25 +11,30 @@
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap"rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Rock+Salt&family=Space+Grotesk:wght@300..700&display=swap"rel="stylesheet">
 
     <link rel="icon" href="./public/images/favicon.png" type="image/png">
 
     <link rel="stylesheet" href="./css/style.css" />
     <script type="module" src="./js/main.js"></script>
     <script type="module" src="./js/teams.js"></script>
+    <script type="module" src="./js/api2.js"></script>
 </head>
 
 <body>
     <header class="divider" id="main-header"></header>
     <main class="main-content">
-        <div id="team-modal" class="modal hidden">
-            <div class="modal-content">
-                <span id="close-modal">&times;</span>
-                <div id="modal-body"></div>
+        <div class="main-grid">
+            <div id="team-modal" class="modal hidden">
+                <div class="modal-content">
+                    <span id="close-modal">&times;</span>
+                    <div id="modal-body"></div>
+                </div>
             </div>
+            <div id="favorite-team"></div>
+            <h1>Today's Matches:</h1>
+            <div id="todayMatches"></div>
         </div>
-        <div id="favorite-team"></div>
     </main>
     <footer id="main-footer"></footer>
 </body>
