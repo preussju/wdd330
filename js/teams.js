@@ -36,7 +36,7 @@ async function loadCountries() {
 
   container.innerHTML = `
     <div class="favorite-team-card">
-      <img src="${team.strBadge}"  alt="${team.strTeam}"style="cursor:pointer" onclick="openModal()" width=250px/>
+      <img src="${team.strBadge}"  alt="${team.strTeam}"style="cursor:pointer" onclick="openModal()" width=200px/>
     </div>`;
 }
 
@@ -55,6 +55,11 @@ function openModal() {
   modal.classList.remove("hidden");
 }
 
+function closeModal() {
+  document.getElementById("team-modal").classList.add("hidden");
+}
+
+window.closeModal = closeModal;
 window.openModal = openModal;
 
 document.getElementById("team-modal").addEventListener("click", (e) => {

@@ -12,11 +12,11 @@ async function loadCountries() {
 // Render a list of countries as cards in the container
 function renderCountries(list) {
   container.innerHTML = list.map(country => `
-<div class="card ${isFavorite(country.fifa_code) ? "favorite" : ""}" onclick="toggleFavorite('${country.fifa_code}')">
-    <div class="flag"> ${getFlagUrl(country.fifa_code) ? `<img src="${getFlagUrl(country.fifa_code)}" alt="flag">` : country.flag_icon}</div>
-    <h3>${country.name}</h3>
-    <p>${country.continent}</p>
-  </div>
+    <div class="card" onclick="window.location.href='team-profile.html?country=${encodeURIComponent(country.name)}'">
+        <div class="flag"> ${getFlagUrl(country.fifa_code) ? `<img src="${getFlagUrl(country.fifa_code)}" alt="flag">` : country.flag_icon}</div>
+        <h3>${country.name}</h3>
+        <p>${country.continent}</p>
+    </div>
   `).join("");
 }
 
@@ -37,27 +37,66 @@ function searchCountries() {
   renderCountries(filtered);
 }
 
-function getFavorite() {
-  return localStorage.getItem("favorite");
-}
 
-function isFavorite(code) {
-  return getFavorite() === code;
-}
 
-function toggleFavorite(code) {
-  const currentFavorite = getFavorite();
+async function openTeamModal(teamName) {
+  const modal = document.getElementById("modal");
+  const modalBody = document.getElementById("modal-body");
 
-  if (currentFavorite === code) {
-    localStorage.removeItem("favorite");
-  } else {
-    localStorage.setItem("favorite", code);
+  modalBody.innerHTML = "<p>Loading...</p>";
+  modal.classList.remove("hidden");
+
+  try {
+    const response = await fetch(
+      `https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=${encodeURIComponent(teamName)}`
+    );
+
+    const data = await response.json();
+
+    const team = data.teams?.[0];
+      
+    if (!team) {
+      modalBody.innerHTML = "<p>Team not found.</p>";
+      return;
+    }
+
+    modalBody.innerHTML = `
+      <h2>${team.strTeam}</h2>
+
+      <img
+        src="${team.strBadge}"
+        alt="${team.strTeam}"
+        width="120"
+      >
+
+      <p><strong>Country:</strong> ${team.strCountry || "-"}</p>
+
+      <p><strong>League:</strong> ${team.strLeague || "-"}</p>
+
+      <p>
+        ${team.strDescriptionEN
+          ? team.strDescriptionEN.substring(0, 600) + "..."
+          : "No description available."}
+      </p>
+    `;
+  } catch (error) {
+    modalBody.innerHTML = "<p>Error loading team information.</p>";
+    console.error(error);
   }
-
-  renderCountries(allCountries);
 }
 
-window.toggleFavorite = toggleFavorite;
+function closeModal() {
+  document.getElementById("modal").classList.add("hidden");
+}
+
+document.getElementById("modal").addEventListener("click", (e) => {
+  if (e.target.id === "modal") {
+    e.target.classList.add("hidden");
+  }
+});
+
+window.closeModal = closeModal;
+window.openTeamModal = openTeamModal;
 window.searchCountries = searchCountries;
 
 const flagMap = {

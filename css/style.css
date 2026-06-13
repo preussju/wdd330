@@ -167,7 +167,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #6f2d2d39;
+    background-color: #947a7a39;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.503);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -228,7 +228,12 @@ body {
 
 .group {
     margin-bottom: 30px;
-    background-color: #202d7246;
+    background-color: #595c6e46;
+    max-width: 300px;
+}
+
+.group h2{
+    padding: 10px 0px 0px 10px;
 }
 
 table {
@@ -239,7 +244,6 @@ table {
 th,
 td {
     border: 2px solid #f0d8c7;
-    padding: 8px;
 }
 
 th {
@@ -251,6 +255,55 @@ td img {
     margin-right: 8px;
 }
 
+/* team profile */
+
+.main-content a{
+    color: black;
+    text-decoration: none;
+    font-family: var(--font-title);
+    font-weight: bolder;
+    font-size: 1.2rem;
+}
+
+.team-profile {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2rem;
+}
+
+.team-badge {
+    width: 200px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.team-info {
+    margin-top: 1rem;
+}
+
+.team-info p {
+    margin: 0.5rem 0;
+}
+
+.players-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+}
+
+.player-card {
+    border: 1px solid #d83232;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.player-card img {
+    width: 100%;
+    max-width: 120px;
+    border-radius: 8px;
+}
 
 /* footer content */
 footer{
@@ -292,6 +345,15 @@ body {
 
 .modal-content {
     width: 600px;
+}
+
+th,
+td {
+    padding: 8px;
+}
+
+.group {
+    max-width: 850px;
 }
 
 }
