@@ -15,17 +15,32 @@ async function loadTeam() {
 
     const playersData = await playersResponse.json();
 
-    const playersHtml = playersData.player
-    ?.map(player => `
+  
+const playersHtml = playersData.player
+  ?.map(player => `
     <div class="player-card">
-      <img src="${player.strThumb || ''}" alt="${player.strPlayer}">
-      <h4>${player.strPlayer}</h4>
-      <p>${player.strPosition || "Unknown Position"}</p>
-      <p> ${player.dateBorn || "Unknownn Birth Date"} </p>
-      <p> ${player.strHeight || "Unknownn Height"} </p>
-    </div>`)
-    .join("") || "";
-    
+      <div class="player-card-inner">
+
+        <div class="player-front">
+          <img src="${player.strThumb || ''}" alt="${player.strPlayer}">
+          <h4>${player.strPlayer}</h4>
+        </div>
+
+        <div class="player-back">
+          <h4>${player.strPlayer}</h4>
+          <p>${player.strPosition || "Unknown Position"}</p>
+          <p>${player.strTeam || "No Team"}</p>
+          <p>-----------------</p>
+          <p>${player.dateBorn || "Unknown Birth Date"}</p>
+          <p>${player.strHeight || "Unknown Height"}</p>
+          <p>${player.strWeight || "Unknown Weight"}</p>
+          <p>${player.strNationality || "Unknown Nationality"}</p>
+        </div>
+
+      </div>
+    </div>
+  `)
+  .join("") || "";
 
     document.getElementById("team-container").innerHTML = `
     <div class="team-profile">

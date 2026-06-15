@@ -1,5 +1,5 @@
 :root {
-    --font-body: "Outift", Helvetica, sans-serif;
+    --font-body: "Outfit", Helvetica, sans-serif;
     --font-headline: "Space Grotesk", sans-serif;
     --font-title: "Rock Salt", sans-serif;
 }
@@ -11,7 +11,7 @@
 }
 
 .trophyIcon{
-    width: 150px;
+    width: 100px;
     height: auto;
     padding: 0;
     margin: 0;
@@ -20,23 +20,48 @@
 
 .hexa {
     text-decoration: none;
-    font-size: 4rem;
+    font-size: 3rem;
     color: black;
     font-family: var(--font-title);
     position: relative;
-    left: 100px;
+    left: 70px;
+}
+
+/* header content */
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 60px;
 }
 
 /* backgorund image  */
 body {
-    background-image: url(../public/images/background-small.png);
+    background-image: url(../public/images/background-small.webp);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
 }
 
+.main-content,
+#main-footer,
+#main-header {
+    background-color: rgba(247, 232, 216, 0.887);
+    margin: 0 auto;
+    max-width: 900px;
+    padding: 40px;
+}
 
 /* navigation for small view*/
+
+nav a {
+    transition: color 1s ease;
+}
+
+nav a:hover {
+    color: #d83232;
+}
+
 #menu {
     font-size: 2rem;
     border: 0;
@@ -55,12 +80,9 @@ body {
     content: "X";
 }
 
-#menu:hover {
-    color: var(--secondary-color);
-}
-
 .navigation li {
-    padding: 10px;
+    padding: 60px 0px 0px 0px;
+    margin-top: 35px;
 }
 
 .navigation {
@@ -80,32 +102,8 @@ body {
     font-weight: 600;
 }
 
-.navigation a:hover {
-    /* background-color: var(--primary-color); */
-    border-radius: 40px;
-}
-
-/* when the button is clicked - the open class is toggled (added/removed) */
 .open a {
     display: block;
-}
-
-
-.main-content, 
-#main-footer,
-#main-header{
-    background-color: rgba(247, 232, 216, 0.887);
-    margin: 0 auto;
-    max-width: 900px;
-    padding: 40px;
-}
-
-/* header content */
-.header{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-radius: 60px;
 }
 
 /* display matches cards */
@@ -121,6 +119,11 @@ body {
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.24);
+}
+
+.match-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.308);
 }
 
 .match-card p {
@@ -142,7 +145,7 @@ body {
     grid-template-columns: 1fr;
 }
 
-/* modal for displaying the favorites countries */
+/* modal */
 .modal {
     position: fixed;
     top: 0;
@@ -162,6 +165,38 @@ body {
     width: 300px;
 }
 
+.modal {
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    animation: slideUp 1s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+/* favorite team on home page */
 #favorite-team {
     margin-bottom: 40px;
     display: flex;
@@ -176,7 +211,6 @@ body {
     padding: 10px;
 }
 
-
 .hidden {
     display: none;
 }
@@ -187,12 +221,22 @@ body {
     font-size: 20px;
 }
 
+/* cards and flags on favorites and teams */
+
 .favorite {
     border: 3px solid gold;
     box-shadow: 0 0 12px gold;
 }
 
-/* cards and flags on favorites */
+.favorite, .hexa, nav a {
+    animation: pulse 0.5s ease;
+}
+
+@keyframes pulse {
+    50% {
+        transform: scale(1.05);
+    }
+}
 
 #search {
     padding: 12px 20px;
@@ -224,8 +268,11 @@ body {
     padding: 20px;
 }
 
-/* tables with groups */
+.card:hover {
+    box-shadow: 0 0 20px rgba(255, 215, 0, .8);
+}
 
+/* tables with groups on home page*/
 .group {
     margin-bottom: 30px;
     background-color: #595c6e46;
@@ -255,7 +302,7 @@ td img {
     margin-right: 8px;
 }
 
-/* team profile */
+/* team profile page*/
 
 .main-content a{
     color: black;
@@ -293,10 +340,59 @@ td img {
 }
 
 .player-card {
-    border: 1px solid #d83232;
-    padding: 10px;
     border-radius: 8px;
     text-align: center;
+    height: 280px;
+    perspective: 1000px;
+}
+
+.player-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.player-card:hover .player-card-inner {
+    transform: rotateY(180deg);
+}
+
+.player-front,
+.player-back {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    backface-visibility: hidden;
+}
+
+.player-back h4 {
+    margin-bottom: 10px;
+}
+
+.player-back p {
+    margin: 2px 0;
+}
+
+.player-front {
+    background: rgba(208, 197, 186, 0.428);
+}
+
+.player-back {
+    background: #d83232;
+    color: white;
+
+    transform: rotateY(180deg);
 }
 
 .player-card img {
@@ -306,6 +402,7 @@ td img {
 }
 
 /* footer content */
+
 footer{
     text-align: center;
 }
@@ -314,7 +411,7 @@ footer{
 @media screen and (min-width: 800px) {
 
 body {
-        background-image: url(../public/images/background-large.png);
+        background-image: url(../public/images/background-large.webp);
     }
 
 .navigation {
@@ -354,6 +451,11 @@ td {
 
 .group {
     max-width: 850px;
+}
+
+.navigation li {
+    padding: 0px;
+    margin-top: 0px;
 }
 
 }
