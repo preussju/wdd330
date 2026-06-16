@@ -1,14 +1,7 @@
-let allCountries = [];
+import { loadCountries } from "./countries.js";
+
 let currentTeam = null;
 
-// Load all countries from the JSON file and render them on the page
-async function loadCountries() {
-  const res = await fetch("./public/json/teams.json");
-    allCountries = await res.json();
-    
-    return allCountries;
-}
- 
  async function displayFavoriteTeamData() {
   
   const countries = await loadCountries();
@@ -20,15 +13,11 @@ async function loadCountries() {
     return;
   }
 
-  const response = await fetch(
-    `https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=${encodeURIComponent(country.name)}`
-  );
-
+  const response = await fetch( `https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=${encodeURIComponent(country.name)}`);
   const data = await response.json();
   console.log(data);
    
   const team = data.teams?.[0];
-
   if (!team) return;
     
   currentTeam = team;
@@ -45,7 +34,7 @@ function openModal() {
   const body = document.getElementById("modal-body");
 
   body.innerHTML = `
-\    <h2>${currentTeam.strTeam}</h2>
+    <h2>${currentTeam.strTeam}</h2>
     <p>Founded: ${currentTeam.intFormedYear}</p>
     <p>Stadium: ${currentTeam.strStadium}</p>
     <p>${currentTeam.strDescriptionEN?.slice(0, 300) || ""}...</p>

@@ -1,4 +1,4 @@
-import { getWorldCupMatches } from "./api.js";
+import { getWorldCupMatches, getTodayGames } from "./api.js";
 
 async function loadCountries() {
   const res = await fetch("./public/json/teams.json");
@@ -57,3 +57,36 @@ function sortMatchesByFavorite(matches, countries) {
 }
 
 displayMatches();
+
+const todaysGame = getTodayGames();
+renderMatches(await todaysGame);
+
+function renderMatches(matches) {
+  const container = document.getElementById("todayMatches");
+
+  container.innerHTML = matches.map(match => `
+    <div class="match-card">
+      <div class="teams">
+        <div class="team">
+          <img src="${match.strHomeTeamBadge}" alt="${match.strHomeTeam}" width=120>
+          <p>${match.strHomeTeam}</p>
+        </div>
+
+        <span class="vs">VS</span>
+
+        <div class="team">
+          <img src="${match.strAwayTeamBadge}" alt="${match.strAwayTeam}" width=120>
+          <p>${match.strAwayTeam}</p>
+        </div>
+      </div>
+
+      <div class="info">
+        <p>📅 ${match.dateEvent}</p>
+        <p>🕒 ${match.strTime?.slice(0,5)}</p>
+        <p>🏟️ ${match.strVenue}</p>
+        <p>📍 ${match.strCity}, ${match.strCountry}</p>
+      </div>
+    </div>
+    `).join("");
+}
+
